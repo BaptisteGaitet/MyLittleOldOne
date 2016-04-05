@@ -50,7 +50,7 @@ GameState.prototype.createNewOldOne = function()
 	this.resize();
 }
 
-GameState.prototype.resize = function()
+GameState.prototype.healthGaugeUpdate = function()
 {
 	this.healthGauge.setWidth((this.oldOne.getHealth() / 100) * 4 * (screenWidth / 16));
 	this.healthGauge.setHeight((screenHeight/16)/2);
@@ -61,6 +61,11 @@ GameState.prototype.resize = function()
 	this.healthBackground.setHeight((screenHeight/16));
 	this.healthBackground.setLeft(getScreenCenter().x - 4 * ((screenWidth / 16)  / 2));
 	this.healthBackground.setTop(getScreenCenter().y + 4.6 * (screenHeight / 16) + (this.healthGauge.getHeight()/2));
+}
+
+GameState.prototype.resize = function()
+{
+	this.healthGaugeUpdate();
 
 	this.nameBackground.setWidth((this.nameLabel.getText().length * 30)/2);
 	this.nameBackground.setLeft(getScreenCenter().x - (this.nameBackground.getWidth()/2));
@@ -99,6 +104,8 @@ GameState.prototype.update = function()
 	this.oldOneShape.setHappyness(this.oldOne.getHealth());
 
 	this.ageLabel.setText(this.oldOne.getAgeString());
+
+	this.healthGaugeUpdate();
 }
 
 GameState.prototype.draw = function()
