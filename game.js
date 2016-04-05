@@ -9,6 +9,14 @@ function load()
 function update()
 {
 	mouseUpdate();
+
+	if(windowSizeChanged)
+	{
+		gameState.resize();
+		mainMenuState.resize();
+
+		windowSizeChanged = false;
+	}
 	
 	if(loaded)
 	{

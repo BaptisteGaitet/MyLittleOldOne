@@ -1,7 +1,7 @@
 function GameState()
 {
 	this.oldOne = new OldOne();
-	this.background = new RectangleShape(0,0,800,600,"#9090f0");
+	this.background = new RectangleShape(0,0,screenWidth,screenHeight,"#9090f0");
 	this.nameLabel = new Label(this.oldOne.getName().toString(), "20px Lucida Console", 100,50,"center", "#e0e0e0");
 	this.healthLabel = new Label(Math.floor(this.oldOne.getHealth()).toString(), "20px Lucida Console", 100, 100, "center", "#e0e0e0");
 	this.ageLabel = new Label("", "12px Lucida Console", 100, 150, "center", "#e0e0e0");
@@ -28,6 +28,21 @@ GameState.prototype.createNewOldOne = function()
 
 	this.healthLabel.setText(Math.floor(this.oldOne.getHealth()).toString());
 	this.nameLabel.setText(this.oldOne.getName());
+}
+
+GameState.prototype.resize = function()
+{
+	this.nameLabel.setLeft(getScreenCenter().x);
+	this.nameLabel.setTop(getScreenCenter().y + 4*(screenHeight/16));
+
+	this.healthLabel.setLeft(getScreenCenter().x);
+	this.healthLabel.setTop(getScreenCenter().y + 5*(screenHeight / 16));
+
+	this.ageLabel.setLeft(getScreenCenter().x);
+	this.ageLabel.setTop(getScreenCenter().y + 6*(screenHeight / 16));
+
+	this.background.setWidth(screenWidth);
+	this.background.setHeight(screenHeight);
 }
 
 GameState.prototype.update = function()
