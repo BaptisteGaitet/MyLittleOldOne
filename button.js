@@ -33,9 +33,9 @@ Button.prototype.getFont = function()
 Button.prototype.setLeft = function(_left)
 {
 	this.left = _left;
-	this.label.setLeft(_left);
+	this.label.setLeft(_left + this.width / 2);
 	this.idleRect.setLeft(_left);
-	this.overRect.setLeft(_left);
+	this.hoverRect.setLeft(_left);
 	this.clicRect.setLeft(_left);
 }
 
@@ -47,9 +47,9 @@ Button.prototype.getLeft = function()
 Button.prototype.setTop = function(_top)
 {
 	this.top = _top;
-	this.label.setTop(_top);
+	this.label.setTop(_top + this.height / 2);
 	this.idleRect.setTop(_top);
-	this.overRect.setTop(_top);
+	this.hoverRect.setTop(_top);
 	this.clicRect.setTop(_top);
 }
 
@@ -62,7 +62,7 @@ Button.prototype.setWidth = function(_width)
 {
 	this.width = _width;
 	this.idleRect.setWidth(_width);
-	this.overRect.setWidth(_width);
+	this.hoverRect.setWidth(_width);
 	this.clicRect.setWidth(_width);
 }
 
@@ -75,7 +75,7 @@ Button.prototype.setHeight = function(_height)
 {
 	this.height = _height;
 	this.idleRect.setHeight(_height);
-	this.overRect.setHeight(_height);
+	this.hoverRect.setHeight(_height);
 	this.clicRect.setHeight(_height);
 }
 
