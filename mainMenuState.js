@@ -49,7 +49,7 @@ MainMenuState.prototype.resize = function()
 	this.punchline.setTop(getScreenCenter().y);
 
 	this.startButton.setLeft(getScreenCenter().x - this.startButton.getWidth() / 2);
-	this.startButton.setTop((getScreenCenter().y + (screenHeight / 16)));
+	this.startButton.setTop((getScreenCenter().y + 2*(screenHeight / 16)));
 
 	this.instruction.setLeft(getScreenCenter().x);
 	this.instruction.setTop(getScreenCenter().y + 6*(screenHeight / 16));
