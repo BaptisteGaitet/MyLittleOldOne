@@ -4,6 +4,9 @@ function CircleShape(_left, _top, _radius, _color)
 	this.top = _top;
 	this.radius = _radius;
 	this.color = _color;
+
+	this.startingAngle = 0;
+	this.endingAngle = 2 * Math.PI;
 }
 
 CircleShape.prototype.setLeft = function(_left)
@@ -36,6 +39,26 @@ CircleShape.prototype.getRadius = function()
 	return this.radius;
 }
 
+CircleShape.prototype.setStartingAngle = function(_startingAngle)
+{
+	this.startingAngle = _startingAngle;
+}
+
+CircleShape.prototype.getStartingAngle = function()
+{
+	return this.startingAngle;
+}
+
+CircleShape.prototype.setEndingAngle = function(_endingAngle)
+{
+	this.endingAngle = _endingAngle;
+}
+
+CircleShape.prototype.getEndingAngle = function()
+{
+	return this.endingAngle;
+}
+
 CircleShape.prototype.setColor = function(_color)
 {
 	this.color = _color;
@@ -51,12 +74,8 @@ CircleShape.prototype.draw = function()
 	var canvas = document.getElementById("game");
 	var context = canvas.getContext("2d");
 
-	context.fillColor(_color);
-	context.drawCircle(this.left, this.top, this.radius);
-
 	context.beginPath();
-    context.arc(this.left, this.top, this.radius, 0, 2 * Math.PI);
+    context.arc(this.left, this.top, this.radius, this.startingAngle, this.endingAngle);
     context.fillStyle = this.color;
     context.fill();
-    context.stroke();
 }
