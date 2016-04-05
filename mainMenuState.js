@@ -1,10 +1,25 @@
 function MainMenuState()
 {
-	this.background = new RectangleShape(0,0,screenWidth,screenHeight,"#b000ff");
+	this.background = new RectangleShape(0,0,screenWidth,screenHeight,"#101010");
 	this.title = new Label("My Little Old One", "60px Lucida Console", 400, 100, "center", "#e0e0e0");
-	this.punchline = new Label("The Cosmos seems empty right now:", "20px Lucida Console", 400, 200, "center", "#e0e0e0");
-	this.startButton = new Button("Chant", "40px Lucida Console", 300, 300, 200, 100, "#e0e0e0", "#505050", "#101010", "#a0a0a0");
-	this.disclaimer = new Label("This so-called \"game\" requires cookies to work, sorry ^^\"", "14px Lucida Console", 400, 550, "center", "#e0e0e0");
+	this.punchline = new Label("The Cosmos is empty right now:", "20px Lucida Console", 400, 200, "center", "#e0e0e0");
+	this.startButton = new Button("Pray", "40px Lucida Console", 300, 300, 200, 100, "#404040", "#a0a0a0", "#f0f0f0");
+	this.instruction = new Label(
+		"Gods tend to disappear if nobody aknowledges them",
+		"14px Lucida Console",
+		400,
+		550,
+		"center",
+		"#e0e0e0"
+	);
+	this.disclaimer = new Label(
+		"(This \"game\" uses cookies)",
+		"14px Lucida Console",
+		400,
+		550,
+		"center",
+		"#e0e0e0"
+	);
 }
 
 MainMenuState.prototype.init = function()
@@ -36,8 +51,10 @@ MainMenuState.prototype.resize = function()
 	this.startButton.setLeft(getScreenCenter().x - this.startButton.getWidth() / 2);
 	this.startButton.setTop((getScreenCenter().y + (screenHeight / 16)));
 
+	this.instruction.setLeft(getScreenCenter().x);
+	this.instruction.setTop(getScreenCenter().y + 6*(screenHeight / 16));
 	this.disclaimer.setLeft(getScreenCenter().x);
-	this.disclaimer.setTop(getScreenCenter().y + 6*(screenHeight / 16));
+	this.disclaimer.setTop(getScreenCenter().y + 7*(screenHeight / 16));
 }
 
 MainMenuState.prototype.draw = function()
@@ -46,5 +63,6 @@ MainMenuState.prototype.draw = function()
 	this.title.draw();
 	this.punchline.draw();
 	this.startButton.draw();
+	this.instruction.draw();
 	this.disclaimer.draw();
 }
