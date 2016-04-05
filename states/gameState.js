@@ -38,9 +38,7 @@ GameState.prototype.createNewOldOne = function()
 	this.nameLabel.setText(this.oldOne.getName());
 
 	var color = getRandomColor();
-	console.log(toHexString(color));
 	var altColor = getDarkerColor(color);
-	console.log(toHexString(altColor));
 
 	this.oldOneShape = new OldOneShape(getScreenCenter().x, getScreenCenter().y - 2*(screenHeight / 16), screenWidth/4, screenHeight/4, toHexString(color), toHexString(altColor));
 
