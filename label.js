@@ -72,6 +72,7 @@ Label.prototype.draw = function()
 {
 	var canvas = document.getElementById("game");
 	var context = canvas.getContext("2d");
+	
 	context.font = this.font;
 	context.fillStyle = this.color;
 	context.textAlign = this.align;
