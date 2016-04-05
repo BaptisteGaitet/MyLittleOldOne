@@ -1,13 +1,13 @@
-function Button(_text, _font, _left, _top, _width, _height, _textColor, _idleColor, _hoverColor, _clicColor)
+function Button(_text, _font, _left, _top, _width, _height, _idleColor, _hoverColor, _clicColor)
 {
 	this.left = _left;
 	this.top = _top;
 	this.width = _width;
 	this.height = _height;
-	this.label = new Label(_text, _font, _left + (_width / 2), _top + (_height / 2), "center", _textColor);
-	this.idleRect = new RectangleShape(_left, _top, _width, _height, _idleColor);;
-	this.hoverRect = new RectangleShape(_left, _top, _width, _height, _hoverColor);
-	this.clicRect = new RectangleShape(_left, _top, _width, _height, _clicColor);;
+	this.idleColor = _idleColor;
+	this.hoverColor = _hoverColor;
+	this.clicColor = _clicColor;
+	this.label = new Label(_text, _font, _left + (_width / 2), _top + (_height / 2), "center", this.idleColor);
 }
 
 Button.prototype.setText = function(_text)
@@ -34,9 +34,6 @@ Button.prototype.setLeft = function(_left)
 {
 	this.left = _left;
 	this.label.setLeft(_left + this.width / 2);
-	this.idleRect.setLeft(_left);
-	this.hoverRect.setLeft(_left);
-	this.clicRect.setLeft(_left);
 }
 
 Button.prototype.getLeft = function()
@@ -48,9 +45,6 @@ Button.prototype.setTop = function(_top)
 {
 	this.top = _top;
 	this.label.setTop(_top + this.height / 2);
-	this.idleRect.setTop(_top);
-	this.hoverRect.setTop(_top);
-	this.clicRect.setTop(_top);
 }
 
 Button.prototype.getTop = function()
@@ -61,9 +55,6 @@ Button.prototype.getTop = function()
 Button.prototype.setWidth = function(_width)
 {
 	this.width = _width;
-	this.idleRect.setWidth(_width);
-	this.hoverRect.setWidth(_width);
-	this.clicRect.setWidth(_width);
 }
 
 Button.prototype.getWidth = function()
@@ -74,9 +65,6 @@ Button.prototype.getWidth = function()
 Button.prototype.setHeight = function(_height)
 {
 	this.height = _height;
-	this.idleRect.setHeight(_height);
-	this.hoverRect.setHeight(_height);
-	this.clicRect.setHeight(_height);
 }
 
 Button.prototype.getHeight = function()
@@ -96,32 +84,32 @@ Button.prototype.getTextColor = function()
 
 Button.prototype.setIdleColor = function(_idleColor)
 {
-	this.idleRect.setColor(_idleColor);
+	this.idleColor = _idleColor;
 }
 
 Button.prototype.getIdleColor = function()
 {
-	return this.idleRect.getColor();
+	return this.idleColor;
 }
 
 Button.prototype.setHoverColor = function(_hoverColor)
 {
-	this.hoverRect.setColor(_hoverColor);
+	this.hoverColor = _hoverColor;
 }
 
 Button.prototype.getHoverColor = function()
 {
-	return this.hoverRect.getColor();
+	return this.hoverColor;
 }
 
 Button.prototype.setClicColor = function(_clicColor)
 {
-	this.clicRect.setColor(_clicColor);
+	this.clicColor = _clicColor;
 }
 
 Button.prototype.getclicColor = function()
 {
-	return this.clicRect.getColor();
+	return this.clicColor;
 }
 
 Button.prototype.draw = function()
@@ -130,16 +118,16 @@ Button.prototype.draw = function()
 	{
 		if(mouseDown)
 		{
-			this.clicRect.draw();
+			this.label.setColor(this.clicColor);
 		}
 		else
 		{
-			this.hoverRect.draw();
+			this.label.setColor(this.hoverColor);
 		}
 	}
 	else
 	{
-		this.idleRect.draw();
+		this.label.setColor(this.idleColor);
 	}
 
 	this.label.draw();
