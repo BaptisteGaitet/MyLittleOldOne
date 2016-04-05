@@ -31,7 +31,7 @@ function getRandomName(minSyllables, randomAdditionalSyllables)
 		name += getRandomVowel();
 	}
 
-	name = name.charAt(0).toUpperCase() + name.substr(1, name.length-1);
+	name = firstCharToUpperCase(name);
 
 	return name;
 }
