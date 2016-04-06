@@ -13,6 +13,8 @@ function GameState()
 	this.healthGauge = new RectangleShape(10,10,100,100,"#50a050");
 
 	this.oldOneShape = new OldOneShape(getScreenCenter().x, getScreenCenter().y - 2*(screenHeight / 16), screenWidth/4, screenHeight/4, "#909090");
+
+	this.noiseSpammer = new NoiseSpammer();
 }
 
 GameState.prototype.init = function()
@@ -104,6 +106,8 @@ GameState.prototype.update = function()
 	this.ageLabel.setText(this.oldOne.getAgeString());
 
 	this.healthGaugeUpdate();
+
+	this.noiseSpammer.update();
 }
 
 GameState.prototype.draw = function()

@@ -90,8 +90,7 @@ OldOne.prototype.calculateHealthLoss = function()
 	var now = new Date();
 	var difference = now.getTime() - lastUpdate.getTime();
 
-	//this.health -= (difference / (24*60*60*10)) / 100;
-	this.health -= (difference) / 100;
+	this.health -= (difference / (24*60*60*10)) / 100;
 }
 
 OldOne.prototype.isDead = function()
