@@ -8,6 +8,8 @@ function Button(_text, _font, _left, _top, _width, _height, _idleColor, _hoverCo
 	this.hoverColor = _hoverColor;
 	this.clicColor = _clicColor;
 	this.label = new Label(_text, _font, _left + (_width / 2), _top + (_height / 2), "center", this.idleColor);
+
+	this.soundPlayed = false;
 }
 
 Button.prototype.setText = function(_text)
@@ -140,6 +142,17 @@ Button.prototype.isClicked = function()
 	if(mouseX >= this.left && mouseX <= (this.left + this.width) && mouseY >= this.top && mouseY <= (this.top + this.height) && mouseClic)
 	{
 		res = true;
+		play("confirm");
+	}else if(mouseX >= this.left && mouseX <= (this.left + this.width) && mouseY >= this.top && mouseY <= (this.top + this.height))
+	{
+		if(!this.soundPlayed)
+		{
+			play("hover");
+			this.soundPlayed = true;
+		}
+	}else
+	{
+		this.soundPlayed = false;
 	}
 
 	return res;
